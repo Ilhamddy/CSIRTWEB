@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Api\OrderController as ApiOrderController;
+use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
@@ -18,9 +20,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', [LandingPageController::class, 'index'])->name('landing-page');
+Route::get('/berita', [BeritaController::class, 'index'])->name('berita-page');
+Route::get('/berita/{slug}', [BeritaController::class, 'show'])->name('berita-detail');
+Route::get('/login', function () {
     return view('pages.auth.login');
-});
+})->name('login');
 // Route::get('/register', function () {
 //     return view('pages.auth.register');
 // })->name('register');

@@ -1,0 +1,244 @@
+@import "tailwindcss";
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom base style */
+:root {
+    color-scheme: light;
+}
+
+/* Utility: sembunyikan scrollbar untuk slider */
+/* Sembunyikan scrollbar jika perlu */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Edge fade: memudarkan konten di sisi kiri/kanan slider agar tampak lebih halus */
+.fade-edges {
+    --fade-size: 32px;
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0,
+        #000 var(--fade-size),
+        #000 calc(100% - var(--fade-size)),
+        transparent 100%
+    );
+    mask-image: linear-gradient(
+        to right,
+        transparent 0,
+        #000 var(--fade-size),
+        #000 calc(100% - var(--fade-size)),
+        transparent 100%
+    );
+}
+
+/* UX drag */
+.swiper {
+    cursor: grab;
+}
+.swiper:active {
+    cursor: grabbing;
+}
+
+/* Pastikan slide mengambil lebar otomatis sesuai slidesPerView */
+.swiper-slide {
+    height: auto;
+}
+html,
+body {
+    font-family: "Poppins", sans-serif;
+}
+/* ====== Hapus Panah Default Swiper ====== */
+/* Sembunyikan default navigation */
+.swiper-button-next,
+.swiper-button-prev {
+    display: none !important;
+}
+
+/* ====== Custom Navigation Arrows ====== */
+.custom-next,
+.custom-prev {
+    width: 32px;
+    height: 32px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    color: #ffffff;
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    outline: none;
+}
+
+.custom-next::after,
+.custom-prev::after {
+    font-family: "Arial", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1;
+}
+
+.custom-next::after {
+    content: "›";
+    margin-left: 1px;
+}
+
+.custom-prev::after {
+    content: "‹";
+    margin-right: 1px;
+}
+
+.custom-next:hover,
+.custom-prev:hover {
+    background: rgba(0, 0, 0, 0.7);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.custom-next:active,
+.custom-prev:active {
+    transform: translateY(-50%) scale(0.9);
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.custom-next {
+    right: 20px;
+}
+
+.custom-prev {
+    left: 20px;
+}
+
+/* Responsif untuk mobile */
+@media (max-width: 768px) {
+    .custom-next,
+    .custom-prev {
+        width: 28px;
+        height: 28px;
+        right: 15px;
+    }
+
+    .custom-prev {
+        left: 15px;
+    }
+
+    .custom-next::after,
+    .custom-prev::after {
+        font-size: 12px;
+    }
+}
+
+/* ====== Custom Bullet Pagination ====== */
+.swiper-pagination {
+    bottom: 20px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.custom-bullet {
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.custom-bullet:hover {
+    background: rgba(255, 255, 255, 0.7);
+    transform: scale(1.2);
+}
+
+.custom-bullet-active {
+    background: #ffffff;
+    width: 24px;
+    height: 8px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.custom-bullet-active:hover {
+    transform: scale(1.05);
+}
+
+/* Smooth fade effect untuk container */
+.swiper-container {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Optional: Gradient overlay untuk kontras yang lebih baik */
+.swiper-slide::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        45deg,
+        rgba(0, 0, 0, 0.1) 0%,
+        transparent 50%,
+        rgba(255, 255, 255, 0.1) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Animasi smooth untuk transisi slide */
+.swiper-slide {
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.swiper-slide-active {
+    transform: scale(1);
+}
+
+.swiper-slide-prev,
+.swiper-slide-next {
+    transform: scale(0.98);
+    opacity: 0.8;
+}
+
+ {
+     {
+        /* Custom */
+    }
+}
+
+.truncate-2-lines {
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* jumlah maksimal baris */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.truncate-3-lines {
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* jumlah maksimal baris */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
