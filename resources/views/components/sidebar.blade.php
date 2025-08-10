@@ -36,7 +36,7 @@
                 <a class="#" href="{{ route('posts.index') }}"><i class="fas fa-check"></i>
                     <span>Posts</span></a>
             </li>
-            <li class="nav-item dropdown ">
+            {{-- <li class="nav-item dropdown ">
                 <a href="#" class="nav-link has-dropdown"><i
                         class="fas fa-list-check"></i><span>Products</span></a>
                 <ul class="dropdown-menu">
@@ -44,7 +44,7 @@
                         <a class="nav-link" href="{{ route('product.index') }}">All Products</a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
             <li class="menu-header">Master</li>
             <li class="nav-item dropdown ">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-user"></i><span>Users</span></a>
@@ -52,9 +52,12 @@
                     <li>
                         <a class="nav-link" href="{{ route('user.index') }}">All Users</a>
                     </li>
+                    <li>
+                        <a class="nav-link" href="{{ route('user.index') }}">Roles</a>
+                    </li>
                 </ul>
             </li>
-            <li class="nav-item dropdown ">
+            {{-- <li class="nav-item dropdown ">
                 <a href="#" class="nav-link has-dropdown"><i
                         class="fa fa-cart-shopping"></i><span>Orders</span></a>
                 <ul class="dropdown-menu">
@@ -62,7 +65,7 @@
                         <a class="nav-link" href="{{ route('order.index') }}">All Orders</a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
         </ul>
     </aside>
 </div>

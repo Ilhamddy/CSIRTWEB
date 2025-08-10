@@ -56,6 +56,8 @@
                         {{ $post->user->name }}</p>
                     <div class="prose max-w-none">
                         {!! $post->content !!}
+                        <p>Source: <a href="{{ $post->source }}" class="underline text-blue-500"
+                                target="_blank">{{ $post->source }}</a></p>
                     </div>
                     <x-share-article :post="$post" />
                     <div class="mt-6">
