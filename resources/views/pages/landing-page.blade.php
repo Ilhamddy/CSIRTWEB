@@ -354,7 +354,30 @@
                         class="hidden sm:inline-flex text-sm font-medium text-emerald-700 hover:underline hover:text-emerald-800">Lihat
                         semua →</a>
                 </div>
-                <x-photo-slider :photos="$photos" title="Galeri Kegiatan" />
+                <x-video-gallery title="Video Kegiatan" :videos="[
+                    [
+                        'videoId' => '9bZkp7q19f0',
+                        'title' => 'Video Pertama',
+                        'description' => 'Deskripsi video pertama',
+                        'start' => 0,
+                    ],
+                    [
+                        'videoId' => 'ScMzIvxBSi4',
+                        'title' => 'Video Kedua',
+                        'description' => 'Deskripsi video kedua',
+                        'start' => 10,
+                    ],
+                    [
+                        'videoId' => '9bZkp7q19f0',
+                        'title' => 'Video Ketiga',
+                        'description' => 'Deskripsi video ketiga',
+                    ],
+                    [
+                        'videoId' => '9bZkp7q19f0',
+                        'title' => 'Video Keempat',
+                        'description' => 'Deskripsi video keempat',
+                    ],
+                ]" />
                 {{-- <x-photo-swiper :photos="$photos" title="Galeri Kegiatan" /> --}}
                 {{-- <div class="mt-6 text-center">
                     <a href="{{ route('posts.index') }}"

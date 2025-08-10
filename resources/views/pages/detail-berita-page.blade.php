@@ -68,11 +68,11 @@
 
                 </article>
                 <div class="col-span-1 sticky top-20 self-start">
-                    <h2 class="text-xl font-semibold mb-4">Berita Lainnya</h2>
+                    <h2 class="text-xl font-semibold mb-4 text-emerald-600">Berita Lainnya</h2>
                     <div class="space-y-4">
                         @foreach ($posts as $relatedPost)
                             @if ($relatedPost->id !== $post->id)
-                                <x-card-post :post="$relatedPost" />
+                                <x-card-post-detail :post="$relatedPost" />
                             @endif
                         @endforeach
                     </div>
