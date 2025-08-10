@@ -234,6 +234,7 @@
                         </div>
                         <div class="card-footer text-right">
                             <button class="btn btn-primary">Submit</button>
+                            <a href="{{ route('posts.index') }}" class="btn btn-secondary ml-2">Cancel</a>
                         </div>
                     </form>
                 </div>

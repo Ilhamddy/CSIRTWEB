@@ -57,7 +57,7 @@
                                 <div class="table-responsive">
                                     <table class="table-striped table">
                                         <tr>
-
+                                            <th>No</th>
                                             <th>Title</th>
                                             <th>Type</th>
                                             <th>Content</th>
@@ -67,7 +67,7 @@
                                         </tr>
                                         @foreach ($posts as $post)
                                             <tr>
-
+                                                <td>{{ $loop->iteration + ($posts->currentPage() - 1) * $posts->perPage() }}
                                                 <td>{{ $post->title }}
                                                 </td>
                                                 <td>{{ $post->type }}
@@ -96,16 +96,15 @@
                                                 <td>
                                                     <div class="d-flex justify-content-center">
                                                         <a href='{{ route('posts.edit', $post->id) }}'
-                                                            class="btn btn-sm btn-info btn-icon mr-2">
+                                                            class="btn btn-sm btn-warning btn-icon mr-2">
                                                             <i class="fas fa-edit"></i>
-                                                            Edit
+                                                            {{-- Edit --}}
                                                         </a>
                                                         <a href="{{ route('posts.destroy', $post->id) }}"
                                                             title="Delete data {{ $post->title }}"
                                                             class="btn btn-sm btn-danger btn-icon action-confirm"
                                                             data-method="delete">
-                                                            <i class="fas fa-times"></i>
-                                                            Delete
+                                                            <i class="fas fa-trash"></i>
                                                         </a>
 
 
