@@ -9,7 +9,7 @@ class LandingPageController extends Controller
 {
     public function index()
     {
-        $berita = Posts::orderBy('published_at', 'desc')->with('user')
+        $berita = Posts::orderBy('created_at', 'desc')->with('user')
             ->where('is_published', true)
             ->where('status', 'published')
             ->take(6)

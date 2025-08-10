@@ -9,7 +9,7 @@ class BeritaController extends Controller
 {
     public function index()
     {
-        $berita = Posts::orderBy('published_at', 'desc')->with('user')
+        $berita = Posts::orderBy('created_at', 'desc')->with('user')
             ->where('is_published', true)
             ->where('status', 'published')
             ->paginate(12);
@@ -19,7 +19,7 @@ class BeritaController extends Controller
     public function show($slug)
     {
         $post = Posts::where('slug', $slug)->with('user')->first();
-        $posts = Posts::orderBy('published_at', 'desc')->with('user')
+        $posts = Posts::orderBy('created_at', 'desc')->with('user')
             ->where('is_published', true)
             ->where('status', 'published')
             ->get();
