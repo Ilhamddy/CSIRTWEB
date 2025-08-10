@@ -67,7 +67,7 @@
                     {{-- Social Media Share Buttons --}}
 
                 </article>
-                <div class="col-span-1">
+                <div class="col-span-1 sticky top-20 self-start">
                     <h2 class="text-xl font-semibold mb-4">Berita Lainnya</h2>
                     <div class="space-y-4">
                         @foreach ($posts as $relatedPost)
