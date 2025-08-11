@@ -12,7 +12,7 @@ class BeritaController extends Controller
         $berita = Posts::orderBy('created_at', 'desc')->with('user')
             ->where('is_published', true)
             ->where('status', 'published')
-            ->paginate(12);
+            ->paginate(6);
         return view('pages.berita-page', compact('berita'));
     }
 
@@ -22,6 +22,8 @@ class BeritaController extends Controller
         $posts = Posts::orderBy('created_at', 'desc')->with('user')
             ->where('is_published', true)
             ->where('status', 'published')
+            ->where('id', '!=', $post->id)
+            ->take(3)
             ->get();
         return view('pages.detail-berita-page', compact('post', 'posts'));
     }

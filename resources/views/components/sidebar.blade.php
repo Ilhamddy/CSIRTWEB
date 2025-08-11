@@ -36,15 +36,18 @@
                 <a class="#" href="{{ route('posts.index') }}"><i class="fas fa-check"></i>
                     <span>Posts</span></a>
             </li>
-            {{-- <li class="nav-item dropdown ">
+            <li class="nav-item dropdown ">
                 <a href="#" class="nav-link has-dropdown"><i
-                        class="fas fa-list-check"></i><span>Products</span></a>
+                        class="fas fa-photo-film"></i><span>Gallery</span></a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a class="nav-link" href="{{ route('product.index') }}">All Products</a>
+                        <a class="nav-link" href="{{ route('foto.index') }}">Foto</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="{{ route('video.index') }}">Video</a>
                     </li>
                 </ul>
-            </li> --}}
+            </li>
             <li class="menu-header">Master</li>
             <li class="nav-item dropdown ">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-user"></i><span>Users</span></a>

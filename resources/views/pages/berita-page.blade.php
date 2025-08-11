@@ -52,6 +52,9 @@
                     <x-card-post :post="$post" />
                 @endforeach
             </div>
+            <div class="mt-8">
+                {{ $berita->links('vendor.pagination.tailwind') }}
+            </div>
             {{-- <div class="mt-6 text-center">
                 <a href="{{ route('posts.index') }}"
                     class="inline-flex items-center justify-center rounded-md text-emerald-600 px-5 py-3 text-sm font-medium underline  hover:bg-emerald-700 hover:text-white focus:outline-none focus-visible:ring focus-visible:ring-emerald-500/50">

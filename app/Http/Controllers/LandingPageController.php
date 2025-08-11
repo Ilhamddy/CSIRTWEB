@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Images;
 use App\Models\Posts;
+use App\Models\Video;
 use Illuminate\Http\Request;
 
 class LandingPageController extends Controller
@@ -14,6 +16,8 @@ class LandingPageController extends Controller
             ->where('status', 'published')
             ->take(6)
             ->get();
-        return view('pages.landing-page', compact('berita'));
+        $photos = Images::orderBy('created_at', 'desc')->take(8)->get();
+        $videos = Video::orderBy('created_at', 'desc')->take(4)->get();
+        return view('pages.landing-page', compact('berita', 'photos', 'videos'));
     }
 }

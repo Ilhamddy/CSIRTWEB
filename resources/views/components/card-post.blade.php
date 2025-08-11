@@ -9,8 +9,7 @@
 
     $colorClass = $typeColors[$post->type] ?? 'bg-gray-500 text-white';
 @endphp
-
-<article class="rounded-xl border border-neutral-200 bg-white shadow-sm overflow-hidden">
+<article class="rounded-xl border border-neutral-200 bg-white shadow-sm overflow-hidden flex flex-col">
     <div class="h-40 w-full bg-neutral-100">
         @if ($post->image)
             <img src="{{ asset('storage/' . $post->image) }}" class="h-full w-full object-cover" alt="{{ $post->title }}">
@@ -18,7 +17,8 @@
             <div class="h-full w-full flex items-center justify-center text-neutral-400 text-sm">No Image</div>
         @endif
     </div>
-    <div class="p-5">
+
+    <div class="p-5 flex flex-col flex-1">
         <div class="flex justify-between items-center">
             <span class="px-3 py-1 rounded-full text-xs font-semibold capitalize {{ $colorClass }}">
                 {{ $post->type }}
@@ -30,7 +30,6 @@
             </span>
         </div>
 
-
         <h3 class="text-base font-semibold line-clamp-2 mt-2">
             {{ $post->title }}
         </h3>
@@ -39,13 +38,16 @@
             {!! strip_tags($post->content) !!}
         </p>
 
-        <a href="{{ route('berita-detail', $post->slug) }}"
-            class="mt-3 inline-block text-sm text-emerald-700 font-medium">
-            Baca selengkapnya →
-        </a>
-        <div class="flex text-[12px] text-neutral-500 mt-3">
-            <span class="font-semibold">{{ $post->user->name }} - </span>
-            <span> {{ $post->created_at->diffForHumans() }}</span>
+        {{-- Bagian bawah selalu nempel --}}
+        <div class="mt-auto">
+            <a href="{{ route('berita-detail', $post->slug) }}"
+                class="mt-3 inline-block text-sm text-emerald-700 font-medium">
+                Baca selengkapnya →
+            </a>
+            <div class="flex text-[12px] text-neutral-500 mt-3">
+                <span class="font-semibold">{{ $post->user->name }} - </span>
+                <span> {{ $post->created_at->diffForHumans() }}</span>
+            </div>
         </div>
     </div>
 </article>

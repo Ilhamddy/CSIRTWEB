@@ -1,33 +1,28 @@
 @props([
-    'videos' => [], // Array berisi data video
+    'videos' => collect(), // Collection Eloquent
     'title' => 'Galeri Video',
 ])
 
 @php
-    // Pastikan videos adalah array dan ambil maksimal 4 video
-    $videoItems = array_slice($videos ?? [], 0, 4);
+    $videoItems = $videos->take(4);
 @endphp
 
-@if (!empty($videoItems))
+@if ($videoItems->count())
     <section class="w-full">
-        {{-- <div class="mb-4">
-            <h2 class="text-lg sm:text-xl font-semibold">{{ $title }}</h2>
-        </div> --}}
+        {{-- <h2 class="text-lg sm:text-xl font-semibold mb-4">{{ $title }}</h2> --}}
 
-        {{-- Grid container: 2 kolom di semua ukuran layar --}}
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             @foreach ($videoItems as $index => $video)
                 @php
-                    $videoId = trim((string) ($video['videoId'] ?? ''));
-                    $videoTitle = $video['title'] ?? 'Video ' . ($index + 1);
-                    $start = (int) ($video['start'] ?? 0);
+                    $videoId = trim((string) $video->url);
+                    $videoTitle = $video->title ?? 'Video ' . ($index + 1);
 
                     if ($videoId) {
                         $params = http_build_query([
                             'rel' => 0,
                             'modestbranding' => 1,
                             'playsinline' => 1,
-                            'start' => $start,
+                            'start' => 0, // Semua video mulai dari detik 0
                         ]);
                         $src = "https://www.youtube.com/embed/{$videoId}?{$params}";
                     } else {
@@ -37,33 +32,20 @@
 
                 @if ($src)
                     <div class="bg-white rounded-lg border border-neutral-200 shadow-sm overflow-hidden">
-                        {{-- Video Title --}}
-                        {{-- <div class="p-3 border-b border-neutral-100">
-                            <h3 class="text-sm font-medium text-neutral-800 line-clamp-2">{{ $videoTitle }}</h3>
-                        </div> --}}
-
-                        {{-- Video Container --}}
-                        <div class="relative w-full" style="padding-top: 56.25%;"> {{-- 16:9 Aspect Ratio --}}
+                        {{-- Video container 16:9 --}}
+                        <div class="relative w-full" style="padding-top: 56.25%;">
                             <iframe class="absolute inset-0 h-full w-full" src="{{ $src }}"
                                 title="{{ $videoTitle }}"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin">
                             </iframe>
                         </div>
-
-                        {{-- Optional: Video Description --}}
-                        {{-- @if (!empty($video['description']))
-                            <div class="p-3 text-sm text-neutral-600">
-                                {{ $video['description'] }}
-                            </div>
-                        @endif --}}
                     </div>
                 @endif
             @endforeach
         </div>
 
-        {{-- Optional: Show more button if there are more than 4 videos --}}
-        @if (count($videos ?? []) > 4)
+        @if ($videos->count() > 4)
             <div class="mt-4 text-center">
                 <button
                     class="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors">

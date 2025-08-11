@@ -30,7 +30,7 @@ Route::get('/login', function () {
 //     return view('pages.auth.register');
 // })->name('register');
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::resource('/user', UserController::class);
     Route::resource('/category', CategoryController::class);
@@ -41,6 +41,9 @@ Route::middleware(['auth'])->group(function () {
 
     // Posts Routes
     Route::resource('/posts', \App\Http\Controllers\PostsController::class);
+    // Gallery Routes
+    Route::resource('/gallery/foto', \App\Http\Controllers\Admin\FotoController::class);
+    Route::resource('/gallery/video', \App\Http\Controllers\Admin\VideoController::class);
 });
 
 Route::post('/summernote-upload', [App\Http\Controllers\SummernoteController::class, 'upload'])->name('summernote.upload');

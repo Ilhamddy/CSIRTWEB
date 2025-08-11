@@ -1,29 +1,17 @@
 @props([
-    'photos' => [],
+    'photos' => collect(),
     'title' => 'Galeri Foto',
 ])
 
 @php
-    $items = array_slice($photos ?? [], 0, 8);
+    // Ambil hanya maksimal 8 foto
+    $items = $photos->take(8);
 @endphp
 
-@if (count($items))
+@if ($items->count())
     <section x-data="{ lightboxOpen: false, lightboxImage: '' }" class="w-full">
-        {{-- <div class="mb-4 flex items-center justify-between">
-            <h2 class="text-lg sm:text-xl font-semibold">{{ $title }}</h2>
-            <div class="flex gap-2">
-                <button type="button"
-                    class="inline-flex h-9 w-9 items-center justify-center rounded-md border border-neutral-200 bg-white text-neutral-700 hover:bg-neutral-50 disabled:opacity-40"
-                    aria-label="Sebelumnya" data-slider-prev>
-                    ‹
-                </button>
-                <button type="button"
-                    class="inline-flex h-9 w-9 items-center justify-center rounded-md border border-neutral-200 bg-white text-neutral-700 hover:bg-neutral-50 disabled:opacity-40"
-                    aria-label="Berikutnya" data-slider-next>
-                    ›
-                </button>
-            </div>
-        </div> --}}
+        {{-- Judul Galeri --}}
+        <h2 class="text-2xl font-bold mb-6">{{ $title }}</h2>
 
         <div class="relative" data-slider>
             <div class="no-scrollbar overflow-x-auto scroll-smooth snap-x snap-mandatory" tabindex="0"
@@ -33,10 +21,12 @@
                         <li class="snap-start shrink-0 group">
                             <figure
                                 class="rounded-lg border relative border-neutral-200 bg-white shadow-sm overflow-hidden cursor-pointer"
-                                @click="lightboxImage='{{ $p['src'] ?? '' }}'; lightboxOpen=true">
+                                @click="lightboxImage='{{ asset('storage/' . $p->image_path) }}'; lightboxOpen=true">
+
+                                {{-- Rasio 3:2 untuk gambar --}}
                                 <div class="relative w-full" style="padding-top: 66.6667%;">
-                                    <img src="{{ $p['src'] ?? '' }}"
-                                        alt="{{ $p['alt'] ?? 'Foto galeri ' . ($idx + 1) }}"
+                                    <img src="{{ asset('storage/' . $p->image_path) }}"
+                                        alt="{{ $p->title ?? 'Foto galeri ' . ($idx + 1) }}"
                                         class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                                         loading="lazy" />
 
@@ -46,10 +36,11 @@
                                     </div>
                                 </div>
 
-                                @if (!empty($p['caption']))
+                                {{-- Caption tampil saat hover --}}
+                                @if (!empty($p->title))
                                     <figcaption
                                         class="px-3 absolute left-2 bottom-2 bg-neutral-100/80 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 py-1 text-sm text-neutral-700">
-                                        {{ $p['caption'] }}
+                                        {{ $p->title }}
                                     </figcaption>
                                 @endif
                             </figure>
@@ -71,6 +62,6 @@
             </div>
         </div>
     </section>
-    <script src="//unpkg.com/alpinejs" defer></script>
 
+    <script src="//unpkg.com/alpinejs" defer></script>
 @endif

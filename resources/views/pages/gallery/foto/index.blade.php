@@ -11,38 +11,29 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Posts</h1>
+                <h1>Photos</h1>
 
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-                    <div class="breadcrumb-item"><a href="#">Product</a></div>
-                    <div class="breadcrumb-item">All Post</div>
+                    <div class="breadcrumb-item"><a href="#">Gallery</a></div>
+                    <div class="breadcrumb-item">Photos</div>
                 </div>
             </div>
             <div class="section-body">
-                {{-- <div class="row">
-                    <div class="col-12">
-                        @include('layouts.alert')
-                    </div>
-                </div> --}}
-                {{-- <h2 class="section-title">Product</h2>
-                <p class="section-lead">
-                    You can manage all Product, such as editing, deleting and more.
-                </p> --}}
 
 
                 <div class="row mt-4">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header d-flex justify-content-between">
-                                <h4>All Posts</h4>
+                                <h4>All Photos</h4>
                                 <div class="section-header-button">
-                                    <a href="{{ route('posts.create') }}" class="btn btn-primary">Add New</a>
+                                    <a href="{{ route('foto.create') }}" class="btn btn-primary">Add New</a>
                                 </div>
                             </div>
                             <div class="card-body">
                                 <div class="float-right">
-                                    <form method="GET" action="{{ route('posts.index') }}">
+                                    <form method="GET" action="{{ route('foto.index') }}">
                                         <div class="input-group">
                                             <input type="text" class="form-control" placeholder="Search" name="search">
                                             <div class="input-group-append">
@@ -59,49 +50,33 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Title</th>
-                                            <th>Type</th>
-                                            <th>Content</th>
-                                            <th>Status</th>
-                                            {{-- <th>Image</th> --}}
+                                            <th>Image</th>
                                             <th>Action</th>
                                         </tr>
-                                        @foreach ($posts as $post)
-                                            <tr>
-                                                <td>{{ $loop->iteration + ($posts->currentPage() - 1) * $posts->perPage() }}
-                                                <td>{{ $post->title }}
-                                                </td>
-                                                <td>{{ $post->type }}
-                                                </td>
-                                                <td class="text-truncate" style="max-width: 200px;">
-                                                    {{ $post->content }}
-                                                </td>
-                                                <td>
-                                                    @if ($post->status == 'draft')
-                                                        <span class="badge badge-warning">Draft</span>
-                                                    @elseif ($post->status == 'published')
-                                                        <span class="badge badge-success">Published</span>
-                                                    @else
-                                                        <span class="badge badge-secondary">Unknown</span>
-                                                    @endif
+                                        @foreach ($photos as $photo)
+                                            <tr class="">
+                                                <td>{{ $loop->iteration + ($photos->currentPage() - 1) * $photos->perPage() }}
+                                                <td>{{ $photo->title }}
                                                 </td>
 
-                                                {{-- <td>
-                                                    @if (Str::startsWith($post->image, ['http://', 'https://']))
-                                                        <img src="{{ $post->image }}" width="50" alt="">
-                                                    @else
-                                                        <img src="{{ asset('storage/posts/' . $post->image) }}"
-                                                            width="50" alt="">
-                                                    @endif
-                                                </td> --}}
                                                 <td>
-                                                    <div class="d-flex justify-content-center">
-                                                        <a href='{{ route('posts.edit', $post->id) }}'
+                                                    @if (Str::startsWith($photo->image, ['http://', 'https://']))
+                                                        <img src="{{ $photo->image }}" width="50" alt="">
+                                                    @else
+                                                        <img src="{{ asset('storage/' . $photo->image_path) }}"
+                                                            width="80" height="50" alt="{{ $photo->title }}"
+                                                            class="">
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex justify-content-center ">
+                                                        <a href='{{ route('foto.edit', $photo->id) }}'
                                                             class="btn btn-sm btn-warning btn-icon mr-2">
                                                             <i class="fas fa-edit"></i>
                                                             {{-- Edit --}}
                                                         </a>
-                                                        <a href="{{ route('posts.destroy', $post->id) }}"
-                                                            title="Delete data {{ $post->title }}"
+                                                        <a href="{{ route('foto.destroy', $photo->id) }}"
+                                                            title="Delete data {{ $photo->title }}"
                                                             class="btn btn-sm btn-danger btn-icon action-confirm"
                                                             data-method="delete">
                                                             <i class="fas fa-trash"></i>
@@ -117,7 +92,7 @@
                                     </table>
                                 </div>
                                 <div class="float-right">
-                                    {{ $posts->withQueryString()->links() }}
+                                    {{ $photos->withQueryString()->links() }}
                                 </div>
                             </div>
                         </div>
@@ -133,7 +108,7 @@
     <script src="{{ asset('library/selectric/public/jquery.selectric.min.js') }}"></script>
 
     <!-- Page Specific JS File -->
-    <script src="{{ asset('js/page/features-posts.js') }}"></script>
+    <script src="{{ asset('js/page/features-photos.js') }}"></script>
     <script>
         // Notifikasi untuk sukses
         @if (session('success'))

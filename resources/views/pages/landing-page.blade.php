@@ -249,7 +249,7 @@
 
     {{-- Galeri Foto --}}
     <section>
-        @php
+        {{-- @php
             $photos = [
                 [
                     'src' =>
@@ -306,7 +306,7 @@
                     'caption' => 'Tambahan (tidak ditampilkan karena >8)',
                 ],
             ];
-        @endphp
+        @endphp --}}
 
         <section class="py-16 sm:py-20">
 
@@ -318,7 +318,7 @@
                         <p class="mt-2 text-neutral-600">Foto kegiatan dan rilis resmi Diskominfo Kabupaten Penajam Paser
                             Utara.</p>
                     </div>
-                    <a href="#"
+                    <a href="{{ route('berita-page') }}"
                         class="hidden sm:inline-flex text-sm font-medium text-emerald-700 hover:underline hover:text-emerald-800">Lihat
                         semua →</a>
                 </div>
@@ -354,39 +354,8 @@
                         class="hidden sm:inline-flex text-sm font-medium text-emerald-700 hover:underline hover:text-emerald-800">Lihat
                         semua →</a>
                 </div>
-                <x-video-gallery title="Video Kegiatan" :videos="[
-                    [
-                        'videoId' => '9bZkp7q19f0',
-                        'title' => 'Video Pertama',
-                        'description' => 'Deskripsi video pertama',
-                        'start' => 0,
-                    ],
-                    [
-                        'videoId' => 'ScMzIvxBSi4',
-                        'title' => 'Video Kedua',
-                        'description' => 'Deskripsi video kedua',
-                        'start' => 10,
-                    ],
-                    [
-                        'videoId' => '9bZkp7q19f0',
-                        'title' => 'Video Ketiga',
-                        'description' => 'Deskripsi video ketiga',
-                    ],
-                    [
-                        'videoId' => '9bZkp7q19f0',
-                        'title' => 'Video Keempat',
-                        'description' => 'Deskripsi video keempat',
-                    ],
-                ]" />
-                {{-- <x-photo-swiper :photos="$photos" title="Galeri Kegiatan" /> --}}
-                {{-- <div class="mt-6 text-center">
-                    <a href="{{ route('posts.index') }}"
-                        class="inline-flex items-center justify-center rounded-md text-emerald-600 px-5 py-3 text-sm font-medium underline  hover:bg-emerald-700 hover:text-white focus:outline-none focus-visible:ring focus-visible:ring-emerald-500/50">
-                        Lihat Semua Foto
-                    </a>
-                </div> --}}
+                <x-video-gallery title="Video Kegiatan" :videos="$videos" />
 
-                {{-- <x-youtube-embed video-id="19g66ezsKAg" title="Profil Diskominfo" /> --}}
             </div>
         </section>
     </section>

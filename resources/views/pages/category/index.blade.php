@@ -81,17 +81,16 @@
                                                 <td>
                                                     <div class="d-flex justify-content-start ">
                                                         <a href='{{ route('category.edit', $category->id) }}'
-                                                            class="btn btn-sm btn-info btn-icon mr-2">
+                                                            class="btn btn-sm btn-warning btn-icon mr-2">
                                                             <i class="fas fa-edit"></i>
-                                                            Edit
                                                         </a>
 
                                                         <a href="{{ route('category.destroy', $category->id) }}"
                                                             title="Delete data {{ $category->name }}"
                                                             class="btn btn-sm btn-danger btn-icon action-confirm"
                                                             data-method="delete">
-                                                            <i class="fas fa-times"></i>
-                                                            Delete
+                                                            <i class="fas fa-trash"></i>
+
                                                         </a>
                                                         {{-- <form action="{{ route('category.destroy', $category->id) }}"
                                                                 method="POST" class="ml-2">
