@@ -17,7 +17,7 @@ class FotoController extends Controller
     public function index()
     {
         $photos = Images::orderBy('created_at', 'desc')->paginate(10);
-        return view('pages.gallery.foto.index', compact('photos'));
+        return view('pages.admin.gallery.foto.index', compact('photos'));
     }
 
     /**
@@ -26,7 +26,7 @@ class FotoController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('pages.gallery.foto.create', compact('categories'));
+        return view('pages.admin.gallery.foto.create', compact('categories'));
     }
 
     /**
@@ -81,7 +81,7 @@ class FotoController extends Controller
     {
         $photo = Images::findOrFail($id);
         $categories = Category::all();
-        return view('pages.gallery.foto.edit', compact('photo', 'categories'));
+        return view('pages.admin.gallery.foto.edit', compact('photo', 'categories'));
     }
 
     /**

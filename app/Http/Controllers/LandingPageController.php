@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Images;
 use App\Models\Posts;
+use App\Models\Slider;
 use App\Models\Video;
 use Illuminate\Http\Request;
 
@@ -18,6 +19,10 @@ class LandingPageController extends Controller
             ->get();
         $photos = Images::orderBy('created_at', 'desc')->take(8)->get();
         $videos = Video::orderBy('created_at', 'desc')->take(4)->get();
-        return view('pages.landing-page', compact('berita', 'photos', 'videos'));
+        $sliders = Slider::where('is_active', true)
+            ->orderBy('sort_order', 'asc')
+            ->orderBy('created_at', 'desc')
+            ->get();
+        return view('pages.landing-page', compact('berita', 'photos', 'videos', 'sliders'));
     }
 }

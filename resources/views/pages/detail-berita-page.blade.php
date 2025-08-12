@@ -74,7 +74,7 @@
                     <div class="space-y-4">
                         @foreach ($posts as $relatedPost)
                             @if ($relatedPost->id !== $post->id)
-                                <x-card-post-detail :post="$relatedPost" />
+                                <x-mini-card-post :post="$relatedPost" />
                             @endif
                         @endforeach
                     </div>

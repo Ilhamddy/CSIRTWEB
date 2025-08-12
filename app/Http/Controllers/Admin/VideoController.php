@@ -15,7 +15,7 @@ class VideoController extends Controller
     public function index()
     {
         $videos = Video::orderBy('created_at', 'desc')->paginate(10);
-        return view('pages.gallery.video.index', compact('videos'));
+        return view('pages.admin.gallery.video.index', compact('videos'));
     }
 
     /**
@@ -24,7 +24,7 @@ class VideoController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('pages.gallery.video.create', compact('categories'));
+        return view('pages.admin.gallery.video.create', compact('categories'));
     }
 
     /**
@@ -75,7 +75,7 @@ class VideoController extends Controller
     {
         $video = Video::findOrFail($id);
         $categories = Category::all();
-        return view('pages.gallery.video.edit', compact('video', 'categories'));
+        return view('pages.admin.gallery.video.edit', compact('video', 'categories'));
     }
 
     /**

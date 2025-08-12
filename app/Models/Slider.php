@@ -8,4 +8,22 @@ use Illuminate\Database\Eloquent\Model;
 class Slider extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'title',
+        'description',
+        'image',
+        'link',
+        'is_active',
+        'sort_order',
+        'user_id'
+    ];
+
+    /**
+     * Get the user that owns the slider.
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

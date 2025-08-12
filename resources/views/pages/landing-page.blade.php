@@ -7,7 +7,13 @@
     <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-8 pb-2 sm:py-24 ">
         <div class="swiper mySwiper rounded-2xl">
             <div class="swiper-wrapper rounded-2xl">
-                <div class="swiper-slide">
+                @foreach ($sliders as $banner)
+                    <div class="swiper-slide">
+                        <img src="{{ asset('storage/' . $banner->image) }}" alt="{{ $banner->title }}"
+                            class="w-full lg:h-[500px] rounded-2xl object-cover">
+                    </div>
+                @endforeach
+                {{-- <div class="swiper-slide">
                     <img src="{{ asset('img/landing/banner-kominfo.jpg') }}" alt=""
                         class="w-full lg:h-[500px] rounded-2xl object-cover">
                 </div>
@@ -15,7 +21,7 @@
                         class="w-full lg:h-[500px] object-cover rounded-2xl"></div>
                 <div class="swiper-slide"><img src="{{ asset('img/landing/banner-kominfo.jpg') }}" alt=""
                         class="w-full lg:h-[500px] rounded-2xl object-cover">
-                </div>
+                </div> --}}
             </div>
 
             <!-- Navigasi & Pagination -->

@@ -22,6 +22,42 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <style>
+        /* Preloader full screen */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        /* Animasi loading (spinner) */
+        .spinner {
+            border: 6px solid #f3f3f3;
+            border-top: 6px solid #009966;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 0.5s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
 </head>
 
 <body class="min-h-dvh bg-white text-neutral-900 antialiased">
@@ -197,6 +233,11 @@
         </div>
     </header>
 
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
+
     <main id="content" class="relative">
         @yield('content')
     </main>
@@ -232,6 +273,21 @@
     </footer>
 
     @stack('scripts')
+    <script>
+        // Hilangkan preloader setelah halaman selesai dimuat
+        window.addEventListener('load', () => {
+            document.getElementById('preloader').style.display = 'none';
+        });
+
+        // Jika ingin muncul saat klik link (pindah halaman)
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', e => {
+                if (link.target !== "_blank" && link.href) {
+                    document.getElementById('preloader').style.display = 'flex';
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

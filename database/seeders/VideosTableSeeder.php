@@ -34,7 +34,7 @@ class VideosTableSeeder extends Seeder
             array (
                 'id' => 2,
                 'title' => 'Diskominfo Travelling',
-                'url' => 'DR_dKsixp7o',
+                'url' => 'lqIGP_doGk8',
                 'date_agenda' => '2025-08-11',
                 'category_id' => 3,
                 'user_id' => 10,
@@ -67,7 +67,7 @@ class VideosTableSeeder extends Seeder
             array (
                 'id' => 5,
                 'title' => 'Diskominfo Travelling',
-                'url' => 'DR_dKsixp7o',
+                'url' => 'lqIGP_doGk8',
                 'date_agenda' => '2025-08-11',
                 'category_id' => 3,
                 'user_id' => 10,

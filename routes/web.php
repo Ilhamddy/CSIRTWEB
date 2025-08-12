@@ -44,6 +44,8 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     // Gallery Routes
     Route::resource('/gallery/foto', \App\Http\Controllers\Admin\FotoController::class);
     Route::resource('/gallery/video', \App\Http\Controllers\Admin\VideoController::class);
+    // Slider Routes
+    Route::resource('/slider', \App\Http\Controllers\Admin\SliderController::class);
 });
 
 Route::post('/summernote-upload', [App\Http\Controllers\SummernoteController::class, 'upload'])->name('summernote.upload');

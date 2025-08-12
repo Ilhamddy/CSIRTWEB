@@ -7,8 +7,8 @@
                         class="fas fa-search"></i></a></li>
         </ul>
         <ul class="navbar-nav">
-            <li class="bg-secondary rounded-circle">
-                <img src="{{ asset('img/logo.png') }}" alt="logo" width="50" height="50">
+            <li class=" rounded-circle">
+                <img src="{{ asset('img/landing/logo-ppu.png') }}" alt="logo" width="50" height="50">
             </li>
         </ul>
     </form>
