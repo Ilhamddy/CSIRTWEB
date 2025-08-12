@@ -14,6 +14,7 @@ class Agenda extends Model
         'description',
         'start_date',
         'end_date',
+        'category_id',
         'user_id',
     ];
 
@@ -23,6 +24,11 @@ class Agenda extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 
     /**

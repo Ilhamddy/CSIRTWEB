@@ -52,6 +52,10 @@
                 <a class="#" href="{{ route('slider.index') }}"><i class="fas fa-sliders"></i>
                     <span>Slider</span></a>
             </li>
+            <li class="{{ Request::is('agenda') ? 'active' : '' }}">
+                <a class="#" href="{{ route('agenda.index') }}"><i class="fas fa-calendar"></i>
+                    <span>Agenda</span></a>
+            </li>
             <li class="menu-header">Master</li>
             <li class="nav-item dropdown ">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-user"></i><span>Users</span></a>

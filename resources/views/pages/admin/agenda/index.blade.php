@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Sliders')
+@section('title', 'Agenda')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -11,12 +11,12 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Slider</h1>
+                <h1>Agenda</h1>
 
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-                    <div class="breadcrumb-item"><a href="#">Slider</a></div>
-                    <div class="breadcrumb-item">Slider</div>
+                    <div class="breadcrumb-item"><a href="#">Agenda</a></div>
+                    {{-- <div class="breadcrumb-item">Slider</div> --}}
                 </div>
             </div>
             <div class="section-body">
@@ -26,14 +26,14 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header d-flex justify-content-between">
-                                <h4>All Slider</h4>
+                                <h4>All Agenda</h4>
                                 <div class="section-header-button">
-                                    <a href="{{ route('slider.create') }}" class="btn btn-primary">Add New</a>
+                                    <a href="{{ route('agenda.create') }}" class="btn btn-primary">Add New</a>
                                 </div>
                             </div>
                             <div class="card-body">
                                 <div class="float-right">
-                                    <form method="GET" action="{{ route('slider.index') }}">
+                                    <form method="GET" action="{{ route('agenda.index') }}">
                                         <div class="input-group">
                                             <input type="text" class="form-control" placeholder="Search" name="search">
                                             <div class="input-group-append">
@@ -51,34 +51,34 @@
                                             <th>No</th>
                                             <th>Title</th>
                                             <th>Description</th>
-                                            <th>Image</th>
-                                            <th>Sort Order</th>
+                                            <th>Start Date</th>
+                                            <th>End Date</th>
+                                            <th>Category</th>
                                             <th>Action</th>
                                         </tr>
-                                        @foreach ($sliders as $slider)
+                                        @foreach ($agendas as $agenda)
                                             <tr class="">
-                                                <td>{{ $loop->iteration + ($sliders->currentPage() - 1) * $sliders->perPage() }}
-                                                <td>{{ $slider->title }}
+                                                <td>{{ $loop->iteration + ($agendas->currentPage() - 1) * $agendas->perPage() }}
+                                                <td>{{ $agenda->title }}
                                                 </td>
-                                                <td>{{ $slider->description }}
+                                                <td>{{ $agenda->description }}
                                                 </td>
 
-                                                <td>
-                                                    <img src="{{ asset('storage/' . $slider->image) }}" width="80"
-                                                        height="50" alt="{{ $slider->title }}" class="">
-
+                                                <td>{{ $agenda->start_date }}
                                                 </td>
-                                                <td>{{ $slider->sort_order }}
+                                                <td>{{ $agenda->end_date ? $agenda->end_date : 'N/A' }}
+                                                </td>
+                                                <td>{{ $agenda->category->name ?? 'N/A' }}
                                                 </td>
                                                 <td>
                                                     <div class="d-flex justify-content-center ">
-                                                        <a href='{{ route('slider.edit', $slider->id) }}'
+                                                        <a href='{{ route('agenda.edit', $agenda->id) }}'
                                                             class="btn btn-sm btn-warning btn-icon mr-2">
                                                             <i class="fas fa-edit"></i>
                                                             {{-- Edit --}}
                                                         </a>
-                                                        <a href="{{ route('slider.destroy', $slider->id) }}"
-                                                            title="Delete data {{ $slider->title }}"
+                                                        <a href="{{ route('agenda.destroy', $agenda->id) }}"
+                                                            title="Delete data {{ $agenda->title }}"
                                                             class="btn btn-sm btn-danger btn-icon action-confirm"
                                                             data-method="delete">
                                                             <i class="fas fa-trash"></i>
@@ -95,7 +95,7 @@
                                     </table>
                                 </div>
                                 <div class="float-right">
-                                    {{ $sliders->withQueryString()->links() }}
+                                    {{ $agendas->withQueryString()->links() }}
                                 </div>
                             </div>
                         </div>

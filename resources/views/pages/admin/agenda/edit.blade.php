@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Edit Slider')
+@section('title', 'Edit Agenda')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -17,18 +17,18 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Edit Slider</h1>
+                <h1>Edit Agenda</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-                    <div class="breadcrumb-item"><a href="#">Slider</a></div>
+                    <div class="breadcrumb-item"><a href="#">Agenda</a></div>
                     <div class="breadcrumb-item">Update</div>
                 </div>
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Slider</h2>
+                <h2 class="section-title">Agenda</h2>
                 <div class="card">
-                    <form action="{{ route('slider.update', $slider) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('agenda.update', $agenda) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="card-body">
@@ -38,8 +38,25 @@
                                     class="form-control @error('title')
                                 is-invalid
                             @enderror"
-                                    name="title" value="{{ $slider->title }}">
+                                    name="title" value="{{ $agenda->title }}">
                                 @error('title')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label>Category</label>
+                                <select class="form-control selectric @error('category_id') is-invalid @enderror"
+                                    name="category_id" required>
+                                    <option value="">Select Category</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}"
+                                            {{ $agenda->category_id == $category->id ? 'selected' : '' }}>
+                                            {{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('category_id')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
@@ -51,7 +68,7 @@
                                     class="form-control @error('description')
                                 is-invalid
                             @enderror"
-                                    value="{{ $slider->description ? $slider->description : old('description') }}"
+                                    value="{{ $agenda->description ? $agenda->description : old('description') }}"
                                     name="description">
                                 @error('description')
                                     <div class="invalid-feedback">
@@ -60,27 +77,13 @@
                                 @enderror
                             </div>
 
-
                             <div class="form-group">
-                                <label>Image</label>
-                                <div class="col-sm-9 position-relative">
-                                    <input type="file" id="image" class="form-control" accept="jpeg,jpg,png"
-                                        name="image" @error('image') is-invalid @enderror onchange="previewImage(event)">
-
-                                    <div style="position: relative; display: inline-block; margin-top:10px;">
-                                        <img id="preview"
-                                            src="{{ $slider->image ? asset('storage/' . $slider->image) : '#' }}"
-                                            alt="Preview"
-                                            style="max-height:200px; {{ $slider->image ? '' : 'display:none;' }}"
-                                            data-old="{{ $slider->image ? asset('storage/' . $slider->image) : '' }}">
-
-                                        <button type="button" id="removePreview"
-                                            style="position:absolute; top:0; right:0; background:red; color:white; border:none; border-radius:50%; width:24px; height:24px; cursor:pointer; display:{{ $slider->image ? 'block' : 'none' }}">
-                                            ×
-                                        </button>
-                                    </div>
-                                </div>
-                                @error('image')
+                                {{-- //Date Agenda --}}
+                                <label>Start Date</label>
+                                <input type="text"
+                                    class="form-control datetimepicker @error('start_date') is-invalid @enderror"
+                                    name="start_date" value="{{ $agenda->start_date }}" required>
+                                @error('start_date')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
@@ -88,58 +91,23 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Link</label>
-                                <input type="url" required
-                                    class="form-control @error('link')
-                                is-invalid
-                            @enderror"
-                                    value="{{ $slider->link ?? old('link') }}" name="link">
-                                @error('link')
+                                {{-- //End Date Agenda --}}
+                                <label>End Date</label>
+                                <input type="text"
+                                    class="form-control datetimepicker @error('end_date') is-invalid @enderror"
+                                    name="end_date" value="{{ $agenda->end_date }}" required>
+                                @error('end_date')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
 
-                            <div class="form-group">
-                                <label>Sort Order</label>
-                                <input type="number" required
-                                    class="form-control @error('sort_order')
-                                is-invalid
-                            @enderror"
-                                    value="{{ $slider->sort_order ?? old('sort_order') }}" name="sort_order">
-                                @error('sort_order')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Status</label>
-                                <div class="selectgroup w-100">
-                                    <label class="selectgroup-item">
-                                        <input type="radio" name="status" value="active" class="selectgroup-input"
-                                            {{ old('status', $slider->is_active ?? '') == true ? 'checked' : '' }}>
-                                        <span class="selectgroup-button">Aktif</span>
-                                    </label>
-                                    <label class="selectgroup-item">
-                                        <input type="radio" name="status" value="nonactive" class="selectgroup-input"
-                                            {{ old('status', $slider->is_active ?? '') == false ? 'checked' : '' }}>
-                                        <span class="selectgroup-button">Tidak Aktif</span>
-                                    </label>
-
-                                </div>
-                                @error('status')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
 
 
                             <div class="card-footer text-right">
                                 <button class="btn btn-primary">Submit</button>
-                                <a href="{{ route('slider.index') }}" class="btn btn-secondary ml-2">Cancel</a>
+                                <a href="{{ route('agenda.index') }}" class="btn btn-secondary ml-2">Cancel</a>
                             </div>
                     </form>
                 </div>

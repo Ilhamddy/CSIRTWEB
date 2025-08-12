@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Slider Create')
+@section('title', 'Agenda Create')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -20,10 +20,10 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Create Slider</h1>
+                <h1>Create Agenda</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-                    <div class="breadcrumb-item"><a href="#">Sliders</a></div>
+                    <div class="breadcrumb-item"><a href="#">Agenda</a></div>
                     <div class="breadcrumb-item">Create</div>
                 </div>
             </div>
@@ -34,10 +34,10 @@
 
 
                 <div class="card">
-                    <form action="{{ route('slider.store') }}" method="POST" enctype="multipart/form-data" id="postForm">
+                    <form action="{{ route('agenda.store') }}" method="POST" id="postForm">
                         @csrf
                         <div class="card-header">
-                            <h4>Form Slider</h4>
+                            <h4>Form Agenda</h4>
                         </div>
                         <div class="card-body">
                             <div class="form-group">
@@ -48,6 +48,23 @@
                             @enderror"
                                     value="{{ old('title') }}" name="title">
                                 @error('title')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label>Category</label>
+                                <select class="form-control selectric @error('category_id') is-invalid @enderror"
+                                    name="category_id" required>
+                                    <option value="">Select Category</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}"
+                                            {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                                            {{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('category_id')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
@@ -68,28 +85,12 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Image</label>
-                                <div class="col-12">
-                                    <input type="file" id="image" class="form-control"
-                                        accept="image/jpeg,image/jpg,image/png" name="image"
-                                        @error('image') is-invalid @enderror onchange="previewImage(event)">
-                                    <img id="preview" src="#" alt="Preview"
-                                        style="display:none; margin-top:10px; max-height:200px;">
-                                </div>
-                                @error('image')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label>Link</label>
-                                <input type="url" required
-                                    class="form-control @error('link')
-                                is-invalid
-                            @enderror"
-                                    value="{{ old('link') }}" name="link">
-                                @error('link')
+                                {{-- //Date Agenda --}}
+                                <label>Start Date</label>
+                                <input type="text"
+                                    class="form-control datetimepicker @error('start_date') is-invalid @enderror"
+                                    name="start_date" value="{{ old('start_date') }}" required>
+                                @error('start_date')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
@@ -97,38 +98,20 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Sort Order</label>
-                                <input type="number" required
-                                    class="form-control @error('sort_order')
-                                is-invalid
-                            @enderror"
-                                    value="{{ old('sort_order') }}" name="sort_order">
-                                @error('sort_order')
+                                {{-- //End Date Agenda --}}
+                                <label>End Date</label>
+                                <input type="text"
+                                    class="form-control datetimepicker @error('end_date') is-invalid @enderror"
+                                    name="end_date" value="{{ old('end_date') }}" required>
+                                @error('end_date')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
-                            <div class="form-group">
-                                <label class="form-label">Status</label>
-                                <div class="selectgroup w-100">
-                                    <label class="selectgroup-item">
-                                        <input type="radio" name="status" value="active" class="selectgroup-input"
-                                            checked="">
-                                        <span class="selectgroup-button">Aktif</span>
-                                    </label>
-                                    <label class="selectgroup-item">
-                                        <input type="radio" name="status" value="nonactive" class="selectgroup-input">
-                                        <span class="selectgroup-button">Tidak Aktif</span>
-                                    </label>
 
-                                </div>
-                                @error('status')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
+
+
 
                         </div>
                         <div class="card-footer text-right">
