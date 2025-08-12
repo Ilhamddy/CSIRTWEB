@@ -23,6 +23,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+    @stack('style')
     <style>
         /* Preloader full screen */
         #preloader {
@@ -133,7 +134,7 @@
                         role="menu" aria-label="Submenu Publikasi" data-dropdown-menu>
                         <a href="#berita" role="menuitem"
                             class="block rounded-md px-3 py-2 hover:bg-neutral-50">Berita</a>
-                        <a href="#" role="menuitem"
+                        <a href="{{ route('front.agenda.index') }}" role="menuitem"
                             class="block rounded-md px-3 py-2 hover:bg-neutral-50">Agenda</a>
                         <a href="#" role="menuitem"
                             class="block rounded-md px-3 py-2 hover:bg-neutral-50">Galeri</a>
@@ -222,7 +223,8 @@
                     </button>
                     <div class="pl-4 border-l border-neutral-200 ml-2 mt-1 space-y-1 hidden" data-submenu>
                         <a href="#berita" class="block rounded-md px-2 py-2 hover:bg-neutral-50">Berita</a>
-                        <a href="#" class="block rounded-md px-2 py-2 hover:bg-neutral-50">Agenda</a>
+                        <a href="{{ route('front.agenda.index') }}"
+                            class="block rounded-md px-2 py-2 hover:bg-neutral-50">Agenda</a>
                         <a href="#" class="block rounded-md px-2 py-2 hover:bg-neutral-50">Galeri</a>
                     </div>
                 </div>

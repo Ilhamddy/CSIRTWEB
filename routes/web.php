@@ -23,6 +23,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [LandingPageController::class, 'index'])->name('landing-page');
 Route::get('/berita', [BeritaController::class, 'index'])->name('berita-page');
 Route::get('/berita/{slug}', [BeritaController::class, 'show'])->name('berita-detail');
+// Agenda
+Route::get('/agenda', [\App\Http\Controllers\AgendaController::class, 'index'])->name('front.agenda.index');
 Route::get('/login', function () {
     return view('pages.auth.login');
 })->name('login');
