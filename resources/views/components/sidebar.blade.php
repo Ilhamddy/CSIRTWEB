@@ -48,6 +48,21 @@
                     </li>
                 </ul>
             </li>
+            <li class="nav-item dropdown {{ Request::is('admin/gallery/*') ? 'active' : '' }}">
+                <a href="#" class="nav-link has-dropdown"><i
+                        class="fas fa-photo-film"></i><span>Project</span></a>
+                <ul class="dropdown-menu">
+                    <li class="{{ Request::is('admin/gallery/foto/*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('foto.index') }}">Menara Telekomunikasi</a>
+                    </li>
+                    <li class="{{ Request::is('admin/gallery/video/*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('video.index') }}">CCTV</a>
+                    </li>
+                    <li class="{{ Request::is('admin/gallery/video/*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('video.index') }}">Blankspot</a>
+                    </li>
+                </ul>
+            </li>
             <li class="{{ Request::is('admin/slider*') ? 'active' : '' }}">
                 <a class="#" href="{{ route('slider.index') }}"><i class="fas fa-sliders"></i>
                     <span>Slider</span></a>
