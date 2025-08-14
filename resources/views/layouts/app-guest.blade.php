@@ -88,12 +88,15 @@
                     </button>
                     <div class="absolute left-0 top-full mt-0 w-64 rounded-lg border border-neutral-200 bg-white shadow-lg p-2 hidden"
                         role="menu" aria-label="Submenu Profil" data-dropdown-menu>
-                        <a href="#tentang" role="menuitem"
-                            class="block rounded-md px-3 py-2 hover:bg-neutral-200">Tentang Kami</a>
-                        <a href="#" role="menuitem" class="block rounded-md px-3 py-2 hover:bg-neutral-200">Visi &
+                        {{-- <a href="#tentang" role="menuitem"
+                            class="block rounded-md px-3 py-2 hover:bg-neutral-200">Tentang Kami</a> --}}
+                        <a href="{{ route('front.visi-misi.index') }}" role="menuitem"
+                            class="block rounded-md px-3 py-2 hover:bg-neutral-200">Visi &
                             Misi</a>
-                        <a href="#" role="menuitem"
+                        <a href="{{ route('front.struktur-organisasi.index') }}" role="menuitem"
                             class="block rounded-md px-3 py-2 hover:bg-neutral-200">Struktur Organisasi</a>
+                        <a href="{{ route('front.tupoksi.index') }}" role="menuitem"
+                            class="block rounded-md px-3 py-2 hover:bg-neutral-200">Tupoksi</a>
                         <a href="#" role="menuitem"
                             class="block rounded-md px-3 py-2 hover:bg-neutral-200">Regulasi</a>
                     </div>
@@ -150,7 +153,7 @@
                     </button>
                     <div class="absolute left-0 top-full mt-0 w-64 rounded-lg border border-neutral-200 bg-white shadow-lg p-2 hidden"
                         role="menu" aria-label="Submenu Gallery" data-dropdown-menu>
-                        <a href="#foto" role="menuitem"
+                        <a href="{{ route('front.gallery.foto') }}" role="menuitem"
                             class="block rounded-md px-3 py-2 hover:bg-neutral-50">Foto</a>
                         <a href="#" role="menuitem"
                             class="block rounded-md px-3 py-2 hover:bg-neutral-50">Video</a>
@@ -189,7 +192,8 @@
                     </button>
                     <div class="pl-4 border-l border-neutral-200 ml-2 mt-1 space-y-1 hidden" data-submenu>
                         <a href="#tentang" class="block rounded-md px-2 py-2 hover:bg-neutral-50">Tentang Kami</a>
-                        <a href="#" class="block rounded-md px-2 py-2 hover:bg-neutral-50">Visi & Misi</a>
+                        <a href="{{ route('front.visi-misi.index') }}"
+                            class="block rounded-md px-2 py-2 hover:bg-neutral-50">Visi & Misi</a>
                         <a href="#" class="block rounded-md px-2 py-2 hover:bg-neutral-50">Struktur
                             Organisasi</a>
                         <a href="#" class="block rounded-md px-2 py-2 hover:bg-neutral-50">Regulasi</a>

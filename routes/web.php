@@ -23,8 +23,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [LandingPageController::class, 'index'])->name('landing-page');
 Route::get('/berita', [BeritaController::class, 'index'])->name('berita-page');
 Route::get('/berita/{slug}', [BeritaController::class, 'show'])->name('berita-detail');
+
 // Agenda
 Route::get('/agenda', [\App\Http\Controllers\AgendaController::class, 'index'])->name('front.agenda.index');
+// Profile
+Route::get('/visi-misi', [\App\Http\Controllers\ProfileController::class, 'visimisi'])->name('front.visi-misi.index');
+Route::get('/struktur-organisasi', [\App\Http\Controllers\ProfileController::class, 'strukturOrganisasi'])->name('front.struktur-organisasi.index');
+Route::get('/tupoksi', [\App\Http\Controllers\ProfileController::class, 'tupoksi'])->name('front.tupoksi.index');
+// Gallery
+Route::get('/foto', [\App\Http\Controllers\GalleryController::class, 'foto'])->name('front.gallery.foto');
+
+
+// Auth Routes
 Route::get('/login', function () {
     return view('pages.auth.login');
 })->name('login');
