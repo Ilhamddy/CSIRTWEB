@@ -50,6 +50,10 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::resource('/slider', \App\Http\Controllers\Admin\SliderController::class);
     // Agenda Routes
     Route::resource('/agenda', \App\Http\Controllers\Admin\AgendaController::class);
+    // Profile Routes
+    Route::resource('/pengaturan/profile', \App\Http\Controllers\Admin\ProfileController::class)->only(['index',  'update', 'store']);
+    // Contact Routes
+    Route::resource('/pengaturan/contact', \App\Http\Controllers\Admin\ContactController::class)->only(['index',  'store']);
 });
 
 Route::post('/summernote-upload', [App\Http\Controllers\SummernoteController::class, 'upload'])->name('summernote.upload');
