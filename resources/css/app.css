@@ -23,6 +23,17 @@
     scrollbar-width: none;
 }
 
+ {
+     {
+        /* User Way */
+    }
+}
+#userwayAccessibilityIcon {
+    right: 20px !important; /* jarak dari sisi kanan */
+    top: 50vh !important; /* posisi tengah vertikal */
+    position: fixed !important;
+}
+
 /* Edge fade: memudarkan konten di sisi kiri/kanan slider agar tampak lebih halus */
 .fade-edges {
     --fade-size: 32px;

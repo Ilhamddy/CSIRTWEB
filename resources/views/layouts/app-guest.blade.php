@@ -10,11 +10,11 @@
     <title>@yield('title', 'Diskominfo Kabupaten')</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
 
-    <head>
-        <!-- Tambahkan sebelum file CSS -->
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
-            rel="stylesheet">
-    </head>
+
+    <!-- Tambahkan sebelum file CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.userway.org/widget.js" data-account="y4OupPNCiv"></script>
+
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -114,18 +114,47 @@
                     </button>
                     <div class="absolute left-0 top-full mt-0 w-72 rounded-lg border border-neutral-200 bg-white shadow-lg p-2 hidden"
                         role="menu" aria-label="Submenu Layanan" data-dropdown-menu>
-                        <a href="#layanan" role="menuitem"
+                        @foreach ($menuLayanan as $layanan)
+                            @php
+                                $url = !empty($layanan->link)
+                                    ? $layanan->link
+                                    : route('front.layanan.show', $layanan->slug);
+                            @endphp
+
+                            <a href="{{ $url }}" role="menuitem"
+                                class="block rounded-md px-3 py-2 hover:bg-neutral-200">
+                                {{ $layanan->title }}
+                            </a>
+                        @endforeach
+                        {{-- <a href="#layanan" role="menuitem"
                             class="block rounded-md px-3 py-2 hover:bg-neutral-50">Informasi Publik</a>
                         <a href="#layanan" role="menuitem"
                             class="block rounded-md px-3 py-2 hover:bg-neutral-50">Pengaduan Masyarakat</a>
                         <a href="#layanan" role="menuitem" class="block rounded-md px-3 py-2 hover:bg-neutral-50">Data &
                             Statistik</a>
                         <a href="#layanan" role="menuitem" class="block rounded-md px-3 py-2 hover:bg-neutral-50">Sistem
-                            Informasi</a>
+                            Informasi</a> --}}
                     </div>
                 </div>
 
                 {{-- Publikasi (Dropdown) --}}
+                <div class="relative" data-dropdown>
+                    <button type="button"
+                        class="inline-flex items-center gap-1 cursor-pointer hover:text-emerald-600 focus:outline-none focus-visible:ring focus-visible:ring-emerald-500/40 rounded"
+                        data-dropdown-button aria-haspopup="true" aria-expanded="false">
+                        <span>Informasi</span>
+                        <span class="transition-transform text-xs" data-caret>▾</span>
+                    </button>
+                    <div class="absolute left-0 top-full mt-0 w-64 rounded-lg border border-neutral-200 bg-white shadow-lg p-2 hidden"
+                        role="menu" aria-label="Submenu Publikasi" data-dropdown-menu>
+                        <a href="#berita" role="menuitem" class="block rounded-md px-3 py-2 hover:bg-neutral-50">Menara
+                            Telekomunikasi</a>
+                        <a href="{{ route('front.agenda.index') }}" role="menuitem"
+                            class="block rounded-md px-3 py-2 hover:bg-neutral-50">Agenda</a>
+                        <a href="#" role="menuitem"
+                            class="block rounded-md px-3 py-2 hover:bg-neutral-50">CCTV</a>
+                    </div>
+                </div>
                 <div class="relative" data-dropdown>
                     <button type="button"
                         class="inline-flex items-center gap-1 cursor-pointer hover:text-emerald-600 focus:outline-none focus-visible:ring focus-visible:ring-emerald-500/40 rounded"
@@ -135,12 +164,12 @@
                     </button>
                     <div class="absolute left-0 top-full mt-0 w-64 rounded-lg border border-neutral-200 bg-white shadow-lg p-2 hidden"
                         role="menu" aria-label="Submenu Publikasi" data-dropdown-menu>
-                        <a href="#berita" role="menuitem"
-                            class="block rounded-md px-3 py-2 hover:bg-neutral-50">Berita</a>
+                        {{-- <a href="#berita" role="menuitem"
+                            class="block rounded-md px-3 py-2 hover:bg-neutral-50">Berita</a> --}}
                         <a href="{{ route('front.agenda.index') }}" role="menuitem"
                             class="block rounded-md px-3 py-2 hover:bg-neutral-50">Agenda</a>
-                        <a href="#" role="menuitem"
-                            class="block rounded-md px-3 py-2 hover:bg-neutral-50">Galeri</a>
+                        {{-- <a href="#" role="menuitem"
+                            class="block rounded-md px-3 py-2 hover:bg-neutral-50">Galeri</a> --}}
                     </div>
                 </div>
 
@@ -155,13 +184,13 @@
                         role="menu" aria-label="Submenu Gallery" data-dropdown-menu>
                         <a href="{{ route('front.gallery.foto') }}" role="menuitem"
                             class="block rounded-md px-3 py-2 hover:bg-neutral-50">Foto</a>
-                        <a href="#" role="menuitem"
+                        <a href="{{ route('front.gallery.video') }}" role="menuitem"
                             class="block rounded-md px-3 py-2 hover:bg-neutral-50">Video</a>
                     </div>
                 </div>
 
                 {{-- Kontak (Single link) --}}
-                <a href="#kontak"
+                <a href="{{ route('front.contact.index') }}"
                     class="hover:text-emerald-600 cursor-pointer focus:outline-none focus-visible:ring focus-visible:ring-emerald-500/40 rounded">Kontak</a>
             </nav>
 
@@ -234,7 +263,8 @@
                 </div>
 
                 {{-- Kontak --}}
-                <a href="#kontak" class="rounded-md px-2 py-2 hover:bg-neutral-50">Kontak</a>
+                <a href="{{ route('front.contact.index') }}"
+                    class="rounded-md px-2 py-2 hover:bg-neutral-50">Kontak</a>
             </div>
         </div>
     </header>

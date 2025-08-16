@@ -106,13 +106,17 @@
                     <h2 class="text-2xl font-semibold tracking-tight sm:text-3xl text-emerald-600">Layanan Utama</h2>
                     <p class="mt-2 text-neutral-600">Kemudahan akses layanan informasi publik secara terpadu.</p>
                 </div>
-                <a href="#"
+                <a href="{{ route('front.layanan.index') }}"
                     class="hidden sm:inline-flex text-sm font-medium text-emerald-700 hover:underline hover:text-emerald-800">Lihat
                     semua →</a>
             </div>
             <div class="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {{-- Card --}}
-                <a href="#"
+                @foreach ($layanans as $layanan)
+                    <x-card-layanan :title="$layanan->title" :subtitle="$layanan->subtitle" :icon="$layanan->icon" :link="$layanan->link"
+                        :slug="$layanan->slug" />
+                @endforeach
+                {{-- <a href="#"
                     class="group rounded-xl border border-neutral-200 bg-white p-5 shadow-sm hover:shadow-md transition focus:outline-none focus-visible:ring focus-visible:ring-emerald-500/40">
                     <div
                         class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-md bg-emerald-100 text-emerald-700 font-semibold">
@@ -121,62 +125,9 @@
                     <p class="mt-1 text-sm text-neutral-600">Dokumen, data, dan keterbukaan informasi untuk masyarakat.</p>
                     <span class="mt-3 inline-flex text-sm font-medium text-emerald-700 group-hover:underline">Akses layanan
                         →</span>
-                </a>
+                </a> --}}
 
-                <a href="#"
-                    class="group rounded-xl border border-neutral-200 bg-white p-5 shadow-sm hover:shadow-md transition focus:outline-none focus-visible:ring focus-visible:ring-emerald-500/40">
-                    <div
-                        class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-md bg-emerald-100 text-emerald-700 font-semibold">
-                        PG</div>
-                    <h3 class="text-base font-semibold">Pengaduan Masyarakat</h3>
-                    <p class="mt-1 text-sm text-neutral-600">Sampaikan aduan dan aspirasi Anda secara mudah dan cepat.</p>
-                    <span class="mt-3 inline-flex text-sm font-medium text-emerald-700 group-hover:underline">Sampaikan
-                        aduan →</span>
-                </a>
 
-                <a href="#"
-                    class="group rounded-xl border border-neutral-200 bg-white p-5 shadow-sm hover:shadow-md transition focus:outline-none focus-visible:ring focus-visible:ring-emerald-500/40">
-                    <div
-                        class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-md bg-emerald-100 text-emerald-700 font-semibold">
-                        SI</div>
-                    <h3 class="text-base font-semibold">Layanan Sistem Informasi</h3>
-                    <p class="mt-1 text-sm text-neutral-600">Permohonan integrasi, perbaikan, dan pengembangan SI.</p>
-                    <span class="mt-3 inline-flex text-sm font-medium text-emerald-700 group-hover:underline">Ajukan
-                        permohonan →</span>
-                </a>
-
-                <a href="#"
-                    class="group rounded-xl border border-neutral-200 bg-white p-5 shadow-sm hover:shadow-md transition focus:outline-none focus-visible:ring focus-visible:ring-emerald-500/40">
-                    <div
-                        class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-md bg-emerald-100 text-emerald-700 font-semibold">
-                        PP</div>
-                    <h3 class="text-base font-semibold">Publikasi & Pers</h3>
-                    <p class="mt-1 text-sm text-neutral-600">Rilis berita, agenda, dan dokumentasi kegiatan pemerintah.</p>
-                    <span class="mt-3 inline-flex text-sm font-medium text-emerald-700 group-hover:underline">Lihat
-                        publikasi →</span>
-                </a>
-
-                <a href="#"
-                    class="group rounded-xl border border-neutral-200 bg-white p-5 shadow-sm hover:shadow-md transition focus:outline-none focus-visible:ring focus-visible:ring-emerald-500/40">
-                    <div
-                        class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-md bg-emerald-100 text-emerald-700 font-semibold">
-                        DS</div>
-                    <h3 class="text-base font-semibold">Data & Statistik</h3>
-                    <p class="mt-1 text-sm text-neutral-600">Statistik, dashboard, dan data sektoral kabupaten.</p>
-                    <span class="mt-3 inline-flex text-sm font-medium text-emerald-700 group-hover:underline">Lihat data
-                        →</span>
-                </a>
-
-                <a href="#"
-                    class="group rounded-xl border border-neutral-200 bg-white p-5 shadow-sm hover:shadow-md transition focus:outline-none focus-visible:ring focus-visible:ring-emerald-500/40">
-                    <div
-                        class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-md bg-emerald-100 text-emerald-700 font-semibold">
-                        TI</div>
-                    <h3 class="text-base font-semibold">TIK Pemerintah</h3>
-                    <p class="mt-1 text-sm text-neutral-600">Infrastruktur TIK, domain, email dinas, dan keamanan siber.</p>
-                    <span class="mt-3 inline-flex text-sm font-medium text-emerald-700 group-hover:underline">Pelajari
-                        →</span>
-                </a>
             </div>
         </div>
     </section>
@@ -235,7 +186,7 @@
                     <h2 class="text-2xl font-semibold tracking-tight sm:text-3xl text-emerald-600">Berita Terbaru</h2>
                     <p class="mt-2 text-neutral-600">Informasi kegiatan dan rilis resmi Diskominfo Kabupaten.</p>
                 </div>
-                <a href="#"
+                <a href="{{ route('berita-page') }}"
                     class="hidden sm:inline-flex text-sm font-medium text-emerald-700 hover:underline hover:text-emerald-800">Lihat
                     semua →</a>
             </div>
@@ -255,64 +206,7 @@
 
     {{-- Galeri Foto --}}
     <section>
-        {{-- @php
-            $photos = [
-                [
-                    'src' =>
-                        'https://images.unsplash.com/photo-1545315176-107735a5d211?q=80&w=1200&auto=format&fit=crop',
-                    'alt' => 'Kegiatan 1',
-                    'caption' => 'Rapat koordinasi',
-                ],
-                [
-                    'src' =>
-                        'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop',
-                    'alt' => 'Kegiatan 2',
-                    'caption' => 'Konferensi pers',
-                ],
-                [
-                    'src' =>
-                        'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200&auto=format&fit=crop',
-                    'alt' => 'Kegiatan 3',
-                    'caption' => 'Pelayanan publik',
-                ],
-                [
-                    'src' =>
-                        'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1200&auto=format&fit=crop',
-                    'alt' => 'Kegiatan 4',
-                    'caption' => 'Sosialisasi',
-                ],
-                [
-                    'src' =>
-                        'https://images.unsplash.com/photo-1560264251-0bd3e9c9a2d5?q=80&w=1200&auto=format&fit=crop',
-                    'alt' => 'Kegiatan 5',
-                    'caption' => 'Pelatihan TIK',
-                ],
-                [
-                    'src' =>
-                        'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1200&auto=format&fit=crop',
-                    'alt' => 'Kegiatan 6',
-                    'caption' => 'Kunjungan kerja',
-                ],
-                [
-                    'src' =>
-                        'https://images.unsplash.com/photo-1521791055366-0d553872125f?q=80&w=1200&auto=format&fit=crop',
-                    'alt' => 'Kegiatan 7',
-                    'caption' => 'Diskusi publik',
-                ],
-                [
-                    'src' =>
-                        'https://images.unsplash.com/photo-1511561411317-51f8ce4cd6f1?q=80&w=1200&auto=format&fit=crop',
-                    'alt' => 'Kegiatan 8',
-                    'caption' => 'Penandatanganan',
-                ],
-                [
-                    'src' =>
-                        'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1200&auto=format&fit=crop',
-                    'alt' => 'Kegiatan 9',
-                    'caption' => 'Tambahan (tidak ditampilkan karena >8)',
-                ],
-            ];
-        @endphp --}}
+
 
         <section class="py-16 sm:py-20">
 
@@ -324,7 +218,7 @@
                         <p class="mt-2 text-neutral-600">Foto kegiatan dan rilis resmi Diskominfo Kabupaten Penajam Paser
                             Utara.</p>
                     </div>
-                    <a href="{{ route('berita-page') }}"
+                    <a href="{{ route('front.gallery.foto') }}"
                         class="hidden sm:inline-flex text-sm font-medium text-emerald-700 hover:underline hover:text-emerald-800">Lihat
                         semua →</a>
                 </div>
@@ -356,7 +250,7 @@
                         <p class="mt-2 text-neutral-600">Foto kegiatan dan rilis resmi Diskominfo Kabupaten Penajam Paser
                             Utara.</p>
                     </div>
-                    <a href="#"
+                    <a href="{ route('front.gallery.video') }}"
                         class="hidden sm:inline-flex text-sm font-medium text-emerald-700 hover:underline hover:text-emerald-800">Lihat
                         semua →</a>
                 </div>

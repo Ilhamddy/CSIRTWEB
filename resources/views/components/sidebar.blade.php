@@ -40,25 +40,29 @@
                 <a href="#" class="nav-link has-dropdown"><i
                         class="fas fa-photo-film"></i><span>Gallery</span></a>
                 <ul class="dropdown-menu">
-                    <li class="{{ Request::is('admin/gallery/foto/*') ? 'active' : '' }}">
+                    <li class="{{ Request::is('admin/gallery/foto*') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('foto.index') }}">Foto</a>
                     </li>
-                    <li class="{{ Request::is('admin/gallery/video/*') ? 'active' : '' }}">
+                    <li class="{{ Request::is('admin/gallery/video*') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('video.index') }}">Video</a>
                     </li>
                 </ul>
             </li>
-            <li class="nav-item dropdown {{ Request::is('admin/gallery/*') ? 'active' : '' }}">
+            <li class="{{ Request::is('admin/layanan*') ? 'active' : '' }}">
+                <a href="{{ route('layanan.index') }}"><i class="fab fa-wpforms"></i>
+                    <span>Layanan</span></a>
+            </li>
+            <li class="nav-item dropdown {{ Request::is('admin/project/*') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown"><i
                         class="fas fa-photo-film"></i><span>Project</span></a>
                 <ul class="dropdown-menu">
-                    <li class="{{ Request::is('admin/gallery/foto/*') ? 'active' : '' }}">
+                    <li class="{{ Request::is('admin/project/foto/*') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('foto.index') }}">Menara Telekomunikasi</a>
                     </li>
-                    <li class="{{ Request::is('admin/gallery/video/*') ? 'active' : '' }}">
+                    <li class="{{ Request::is('admin/project/video/*') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('video.index') }}">CCTV</a>
                     </li>
-                    <li class="{{ Request::is('admin/gallery/video/*') ? 'active' : '' }}">
+                    <li class="{{ Request::is('admin/project/video/*') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('video.index') }}">Blankspot</a>
                     </li>
                 </ul>

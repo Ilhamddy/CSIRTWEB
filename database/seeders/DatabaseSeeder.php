@@ -31,5 +31,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AgendasTableSeeder::class);
         $this->call(ProfilesTableSeeder::class);
         $this->call(ContactsTableSeeder::class);
+        $this->call(LayanansTableSeeder::class);
     }
 }

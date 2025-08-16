@@ -32,7 +32,12 @@ Route::get('/struktur-organisasi', [\App\Http\Controllers\ProfileController::cla
 Route::get('/tupoksi', [\App\Http\Controllers\ProfileController::class, 'tupoksi'])->name('front.tupoksi.index');
 // Gallery
 Route::get('/foto', [\App\Http\Controllers\GalleryController::class, 'foto'])->name('front.gallery.foto');
-
+Route::get('/video', [\App\Http\Controllers\GalleryController::class, 'video'])->name('front.gallery.video');
+// Layanan
+Route::get('/layanan', [\App\Http\Controllers\LayananController::class, 'index'])->name('front.layanan.index');
+Route::get('/layanan/{slug}', [\App\Http\Controllers\LayananController::class, 'show'])->name('front.layanan.show');
+// Contact
+Route::get('/kontak', [\App\Http\Controllers\ContactController::class, 'index'])->name('front.contact.index');
 
 // Auth Routes
 Route::get('/login', function () {
@@ -60,6 +65,8 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::resource('/slider', \App\Http\Controllers\Admin\SliderController::class);
     // Agenda Routes
     Route::resource('/agenda', \App\Http\Controllers\Admin\AgendaController::class);
+    // Route Layanan
+    Route::resource('/layanan', \App\Http\Controllers\Admin\LayananController::class);
     // Profile Routes
     Route::resource('/pengaturan/profile', \App\Http\Controllers\Admin\ProfileController::class)->only(['index',  'update', 'store']);
     // Contact Routes

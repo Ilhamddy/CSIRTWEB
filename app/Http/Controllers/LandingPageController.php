@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Images;
+use App\Models\Layanan;
 use App\Models\Posts;
 use App\Models\Slider;
 use App\Models\Video;
@@ -23,6 +24,11 @@ class LandingPageController extends Controller
             ->orderBy('sort_order', 'asc')
             ->orderBy('created_at', 'desc')
             ->get();
-        return view('pages.landing-page', compact('berita', 'photos', 'videos', 'sliders'));
+        $layanans = Layanan::where('is_active', true)
+            ->orderBy('order', 'asc')
+            ->orderBy('created_at', 'desc')
+            ->take(6)
+            ->get();
+        return view('pages.landing-page', compact('berita', 'photos', 'videos', 'sliders', 'layanans'));
     }
 }
