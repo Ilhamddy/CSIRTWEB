@@ -102,6 +102,10 @@
                     </li>
                 </ul>
             </li>
+            <li class="{{ Request::is('admin/monitor*') ? 'active' : '' }}">
+                <a class="" href="{{ route('monitor.index') }}"><i class="fas fa-computer"></i>
+                    <span>Monitor</span></a>
+            </li>
             {{-- <li class="nav-item dropdown ">
                 <a href="#" class="nav-link has-dropdown"><i
                         class="fa fa-cart-shopping"></i><span>Orders</span></a>

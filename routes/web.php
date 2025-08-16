@@ -71,6 +71,9 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::resource('/pengaturan/profile', \App\Http\Controllers\Admin\ProfileController::class)->only(['index',  'update', 'store']);
     // Contact Routes
     Route::resource('/pengaturan/contact', \App\Http\Controllers\Admin\ContactController::class)->only(['index',  'store']);
+
+    // Monitor Routes
+    Route::get('/monitor', [\App\Http\Controllers\Admin\MonitorController::class, 'index'])->name('monitor.index');
 });
 
 Route::post('/summernote-upload', [App\Http\Controllers\SummernoteController::class, 'upload'])->name('summernote.upload');
