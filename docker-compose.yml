@@ -1,0 +1,41 @@
+services:
+    # Laravel (PHP-FPM)
+    app:
+        build: .
+        container_name: website_skpd
+        restart: unless-stopped
+        working_dir: /var/www/html
+        volumes:
+            - .:/var/www/html
+        networks:
+            - npm_network
+        depends_on:
+            - db
+            # - node
+        ports:
+            - "8081:8000"
+        command: php artisan serve --host=0.0.0.0 --port=8000
+
+    # MySQL
+    db:
+        image: mysql:latest
+        container_name: db_website_skpd
+        restart: unless-stopped
+        environment:
+            MYSQL_DATABASE: mahakam_db
+            MYSQL_USER: user
+            MYSQL_PASSWORD: laravel12
+            MYSQL_ROOT_PASSWORD: laravel12
+        ports:
+            - "3313:3306"
+        networks:
+            - npm_network
+        volumes:
+            - db_data:/var/lib/mysql
+networks:
+    npm_network:
+        external: true
+        name: nginx-proxy-manager_default
+
+volumes:
+    db_data:
