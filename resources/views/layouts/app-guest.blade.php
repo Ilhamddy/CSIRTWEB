@@ -78,7 +78,7 @@
             <nav aria-label="Navigasi utama" class="hidden md:flex items-center gap-6 text-sm">
                 {{-- Profil (Dropdown) --}}
                 <a href="{{ route('landing-page') }}"
-                    class="rounded-md px-2 py-2 cursor-pointer hover:text-emerald-600">Beranda</a>
+                    class="rounded-md px-2 py-2 cursor-pointer {{ Route::is('landing-page') ? 'text-emerald-600' : '' }} hover:text-emerald-600">Beranda</a>
                 <div class="relative" data-dropdown>
                     <button type="button"
                         class="inline-flex items-center gap-1 cursor-pointer hover:text-emerald-600 focus:outline-none focus-visible:ring focus-visible:ring-emerald-500/40 rounded"
@@ -102,12 +102,12 @@
                     </div>
                 </div>
                 <a href="{{ route('berita-page') }}"
-                    class="rounded-md px-2 py-2 cursor-pointer hover:text-emerald-600">Berita</a>
+                    class="rounded-md px-2 py-2 cursor-pointer {{ Route::is('berita-page') ? 'text-emerald-600' : '' }} hover:text-emerald-600">Berita</a>
 
                 {{-- Layanan (Dropdown) --}}
                 <div class="relative" data-dropdown>
                     <button type="button"
-                        class="inline-flex items-center gap-1 cursor-pointer hover:text-emerald-600 focus:outline-none focus-visible:ring focus-visible:ring-emerald-500/40 rounded"
+                        class="inline-flex items-center gap-1 cursor-pointer {{ Request::is('layanan*') ? 'text-emerald-600' : '' }} hover:text-emerald-600 focus:outline-none focus-visible:ring focus-visible:ring-emerald-500/40 rounded"
                         data-dropdown-button aria-haspopup="true" aria-expanded="false">
                         <span>Layanan</span>
                         <span class="transition-transform text-xs" data-caret>▾</span>
@@ -175,7 +175,7 @@
 
                 <div class="relative" data-dropdown>
                     <button type="button"
-                        class="inline-flex items-center gap-1 cursor-pointer hover:text-emerald-600 focus:outline-none focus-visible:ring focus-visible:ring-emerald-500/40 rounded"
+                        class="inline-flex items-center gap-1 cursor-pointer {{ Request::is('foto*') || Request::is('video*') ? 'text-emerald-600' : '' }} hover:text-emerald-600 focus:outline-none focus-visible:ring focus-visible:ring-emerald-500/40 rounded"
                         data-dropdown-button aria-haspopup="true" aria-expanded="false">
                         <span>Gallery</span>
                         <span class="transition-transform text-xs" data-caret>▾</span>
@@ -191,7 +191,7 @@
 
                 {{-- Kontak (Single link) --}}
                 <a href="{{ route('front.contact.index') }}"
-                    class="hover:text-emerald-600 cursor-pointer focus:outline-none focus-visible:ring focus-visible:ring-emerald-500/40 rounded">Kontak</a>
+                    class="hover:text-emerald-600 cursor-pointer {{ Route::is('front.contact.index') ? 'text-emerald-600' : '' }} focus:outline-none focus-visible:ring focus-visible:ring-emerald-500/40 rounded">Kontak</a>
             </nav>
 
             {{-- CTA + Mobile Toggle --}}
