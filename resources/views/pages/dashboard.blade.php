@@ -37,10 +37,10 @@
                         </div>
                         <div class="card-wrap">
                             <div class="card-header">
-                                <h4>Total Categories</h4>
+                                <h4>Total Berita</h4>
                             </div>
                             <div class="card-body">
-                                {{ $categories }}
+                                {{ $berita }}
                             </div>
                         </div>
                     </div>
@@ -52,10 +52,10 @@
                         </div>
                         <div class="card-wrap">
                             <div class="card-header">
-                                <h4>Total Products</h4>
+                                <h4>Total Foto</h4>
                             </div>
                             <div class="card-body">
-                                {{ $products }}
+                                {{ $foto }}
                             </div>
                         </div>
                     </div>
@@ -67,16 +67,16 @@
                         </div>
                         <div class="card-wrap">
                             <div class="card-header">
-                                <h4>Total Transaction</h4>
+                                <h4>Total Video</h4>
                             </div>
                             <div class="card-body">
-                                {{ $orders }}
+                                {{ $video }}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-lg-12 col-md-12 col-12 col-sm-12">
                     <div class="card">
                         <div class="card-header">
@@ -87,18 +87,18 @@
                                     <a href="#" class="btn">Month</a>
                                 </div>
                             </div> --}}
-                        </div>
-                        <canvas id="chartTotalCost" class="p-4"></canvas>
-                    </div>
-                </div>
-            </div>
-        </section>
+    </div>
+    <canvas id="chartTotalCost" class="p-4"></canvas>
+    </div>
+    </div>
+    </div> --}}
+    </section>
     </div>
 @endsection
 
 @push('scripts')
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> --}}
+    {{-- <script>
         const pendapatan = <?php echo json_encode($total_cost); ?>;
         const bulan = <?php echo json_encode($bulan); ?>;
         console.log(pendapatan)
@@ -133,7 +133,7 @@
             }
         });
     </script>
-    <!-- JS Libraies -->
+    <!-- JS Libraies --> --}}
     <script src="{{ asset('library/simpleweather/jquery.simpleWeather.min.js') }}"></script>
     <script src="{{ asset('library/chart.js/dist/Chart.min.js') }}"></script>
 
