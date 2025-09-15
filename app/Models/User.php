@@ -24,6 +24,8 @@ class User extends Authenticatable
         'roles',
         'password',
         'fcm_id',
+        'google_id',
+         'avatar'
     ];
 
     /**

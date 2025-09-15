@@ -8,7 +8,7 @@
     <section>
         @php
             $title = 'Layanan';
-            $subtitle = 'Informasi terkini dari Dinas Komunikasi dan Informatika Kabupaten Penajam Paser Utara.';
+            $subtitle = 'Informasi terkini dari CSIRT Dinas Komunikasi dan Informatika Kabupaten Penajam Paser Utara.';
         @endphp
         <x-banner-page :title="$layanan->title" :subtitle="$subtitle" />
 

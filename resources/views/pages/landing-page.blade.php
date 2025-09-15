@@ -4,13 +4,15 @@
 
 @section('content')
     {{-- Hero --}}
-    <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-8 pb-2 sm:py-24 ">
+    <!-- <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-8 pb-2 sm:py-24 "> -->
+    <section class="h-screen bg-cover bg-no-repeat">
+
         <div class="swiper mySwiper rounded-2xl">
             <div class="swiper-wrapper rounded-2xl">
                 @foreach ($sliders as $banner)
                     <div class="swiper-slide">
                         <img src="{{ asset('storage/' . $banner->image) }}" alt="{{ $banner->title }}"
-                            class="w-full lg:h-[500px] rounded-2xl object-cover">
+                            class="w-full lg:h-[700px] rounded-2xl object-cover">
                     </div>
                 @endforeach
                 {{-- <div class="swiper-slide">
@@ -45,8 +47,8 @@
                         class="inline-flex items-center rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700">
                         Layanan Informasi Publik
                     </p>
-                    <h1 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-                        Dinas Komunikasi dan Informatika Kabupaten Penajam Paser Utara
+                    <h1 class="text-2xl font-bold tracking-tight sm:text-3xl lg:text4xl">
+                        CSIRT Dinas Komunikasi dan Informatika Kab Penajam Paser Utara
                     </h1>
                     <p class="max-w-2xl text-neutral-600 text-base sm:text-lg">
                         Mewujudkan tata kelola pemerintahan digital yang transparan, akuntabel, dan berorientasi pada
@@ -54,7 +56,7 @@
                     </p>
                     <div class="flex flex-col sm:flex-row gap-3">
                         <a href="#layanan"
-                            class="inline-flex items-center justify-center rounded-md bg-emerald-600 px-5 py-3 text-sm font-medium text-white shadow-sm hover:bg-emerald-700 focus:outline-none focus-visible:ring focus-visible:ring-emerald-500/50">
+                            class="inline-flex items-center justify-center rounded-md bg-[#0b1891ff] px-5 py-3 text-sm font-medium text-white shadow-sm hover:bg-emerald-700 focus:outline-none focus-visible:ring focus-visible:ring-emerald-500/50">
                             Jelajahi Layanan
                         </a>
                         <a href="#kontak"
@@ -295,7 +297,7 @@
                                 placeholder="Tulis pesan Anda"></textarea>
                         </div>
                         <button type="submit"
-                            class="inline-flex items-center justify-center rounded-md bg-emerald-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-emerald-700 focus:outline-none focus-visible:ring focus-visible:ring-emerald-500/50">
+                            class="inline-flex items-center justify-center rounded-md bg-[#0b1891ff] px-5 py-2.5 text-sm font-medium text-white hover:bg-emerald-700 focus:outline-none focus-visible:ring focus-visible:ring-emerald-500/50">
                             Kirim Pesan
                         </button>
                     </div>

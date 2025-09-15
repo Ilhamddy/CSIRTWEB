@@ -116,7 +116,7 @@
                         </div>
 
                         <button type="submit"
-                            class="w-full sm:w-auto inline-flex items-center justify-center rounded-lg bg-emerald-600 px-6 py-3 text-sm font-medium text-white shadow-sm hover:bg-emerald-700 focus:outline-none focus-visible:ring focus-visible:ring-emerald-500/50 transition">
+                            class="w-full sm:w-auto inline-flex items-center justify-center rounded-lg bg-[#0b1891ff] px-6 py-3 text-sm font-medium text-white shadow-sm hover:bg-emerald-700 focus:outline-none focus-visible:ring focus-visible:ring-emerald-500/50 transition">
                             <span>Kirim Pesan</span>
                             <span class="ml-2">→</span>
                         </button>

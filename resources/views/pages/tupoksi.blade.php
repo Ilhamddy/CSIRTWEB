@@ -8,7 +8,7 @@
     <section>
         @php
             $title = 'Tugas dan Fungsi';
-            $subtitle = 'Informasi terkini dari Dinas Komunikasi dan Informatika Kabupaten Penajam Paser Utara.';
+            $subtitle = 'Informasi terkini dari CSIRT Dinas Komunikasi dan Informatika Kabupaten Penajam Paser Utara.';
         @endphp
         <x-banner-page :title="$title" :subtitle="$subtitle" />
 
@@ -69,7 +69,7 @@
                                         <div class="flex items-start">
                                             {{-- Nomor bundar --}}
                                             <div
-                                                class="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-600 text-white font-bold text-lg">
+                                                class="flex items-center justify-center w-10 h-10 rounded-full bg-[#0b1891ff] text-white font-bold text-lg">
                                                 {{ $index + 1 }}
                                             </div>
 

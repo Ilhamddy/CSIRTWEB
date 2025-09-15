@@ -40,9 +40,11 @@ Route::get('/layanan/{slug}', [\App\Http\Controllers\LayananController::class, '
 Route::get('/kontak', [\App\Http\Controllers\ContactController::class, 'index'])->name('front.contact.index');
 
 // Auth Routes
-Route::get('/login', function () {
+Route::middleware(['guest'])->group(function () {
+    Route::get('/login', function () {
     return view('pages.auth.login');
 })->name('login');
+});
 // Route::get('/register', function () {
 //     return view('pages.auth.register');
 // })->name('register');
@@ -79,3 +81,8 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 Route::post('/summernote-upload', [App\Http\Controllers\SummernoteController::class, 'upload'])->name('summernote.upload');
 
 Route::get('/getChatTele', [ApiOrderController::class, 'getChatId']);
+
+Route::get('/auth/google', [App\Http\Controllers\Api\AuthController::class, 'redirectToGoogle'])->name('auth.google');
+Route::get('/auth/google/callback', [App\Http\Controllers\Api\AuthController::class, 'handleGoogleCallback'])->name('auth.google.callback');
+
+
