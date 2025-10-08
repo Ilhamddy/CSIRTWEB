@@ -78,9 +78,9 @@
             </div>
 
             <!-- reCAPTCHA -->
-            <!-- <div class="py-2">
+            <div class="py-2">
                 <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
-            </div> -->
+            </div>
 
             <!-- Remember Me -->
             <div class="flex items-center">

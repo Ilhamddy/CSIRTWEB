@@ -137,7 +137,7 @@
                                 </div>
                                 <div>
                                     <p class="font-medium text-neutral-900">Alamat</p>
-                                    <p class="text-sm text-neutral-600">{{ $contact->address }}</p>
+                                    <p class="text-sm text-neutral-600">{{ $contact->address ??  '-'}}</p>
                                 </div>
                             </div>
 
@@ -149,7 +149,7 @@
                                 </div>
                                 <div>
                                     <p class="font-medium text-neutral-900">Telepon</p>
-                                    <p class="text-sm text-neutral-600">{{ $contact->phone }}</p>
+                                    <p class="text-sm text-neutral-600">{{ $contact->phone ?? '-' }}</p>
                                 </div>
                             </div>
 
@@ -161,7 +161,7 @@
                                 </div>
                                 <div>
                                     <p class="font-medium text-neutral-900">Email</p>
-                                    <p class="text-sm text-neutral-600">{{ $contact->email }}</p>
+                                    <p class="text-sm text-neutral-600">{{ $contact->email ?? '-'  }}</p>
                                 </div>
                             </div>
 

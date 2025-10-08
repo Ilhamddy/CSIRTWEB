@@ -7,6 +7,8 @@ use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\rfcController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,6 +40,10 @@ Route::get('/layanan', [\App\Http\Controllers\LayananController::class, 'index']
 Route::get('/layanan/{slug}', [\App\Http\Controllers\LayananController::class, 'show'])->name('front.layanan.show');
 // Contact
 Route::get('/kontak', [\App\Http\Controllers\ContactController::class, 'index'])->name('front.contact.index');
+// Contact
+
+Route::get('/rfc', [\App\Http\Controllers\rfcController::class, 'index'])->name('front.rfc.index');
+
 
 // Auth Routes
 Route::middleware(['guest'])->group(function () {
