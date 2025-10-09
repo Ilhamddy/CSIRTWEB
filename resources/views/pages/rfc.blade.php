@@ -10,9 +10,14 @@
                 <h1 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
                     RFC 2350 - CSIRT Diskominfo Kabupaten
                 </h1>
-<a href="https://datatracker.ietf.org/doc/html/rfc2350" target="_blank" rel="noopener noreferrer"  class="mt-6 inline-block rounded bg-emerald-600 px-5 py-3 text-sm font-medium text-white hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2">
-                    Download RFC 2350
-</a>
+<a 
+        href="{{asset('/rfc2350.pdf')}}" 
+        target="_blank" 
+    
+        download="RFC2350-CSIRT-Diskominfo.pdf" 
+        class="mt-6 inline-block rounded bg-emerald-600 px-5 py-3 text-sm font-medium text-white hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2">
+        Download RFC 2350
+      </a>
                  
                   
                 <p class="mt-4 max-w-2xl mx-auto text-neutral-600 text-base sm:text-lg">
